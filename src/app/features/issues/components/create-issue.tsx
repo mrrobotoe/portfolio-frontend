@@ -42,7 +42,7 @@ const CreateIssue = () => {
       title: "",
       description: "",
       status: "Open",
-      project: projects.data?.[0].id ?? "",
+      project: projects.data?.[0].id ?? 0,
     },
   });
 

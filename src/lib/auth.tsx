@@ -1,4 +1,3 @@
-// import { ResponseType } from 'axios';
 import { configureAuth } from "react-query-auth";
 import { Navigate, useLocation } from "react-router-dom";
 import { z } from "zod";
