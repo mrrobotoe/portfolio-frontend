@@ -1,0 +1,76 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--border-radius\:md);
+  padding-right: var(--padding\:2\.5);
+  padding-left: var(--padding\:2\.5);
+  padding-top: var(--padding\:0\.5);
+  padding-bottom: var(--padding\:0\.5);
+  box-shadow: var(--shadow\:sm);
+  font-size: 0.675rem;
+  letter-spacing: 0.9px;
+  font-weight: 500;
+  border: 1px solid;
+  cursor: text;
+
+  &--default {
+    border-color: transparent;
+    background-color: var(--slate\.900);
+    color: var(--neutral\.50);
+
+    &:hover {
+      background-color: hsl(from var(--slate\.950) h s l / 65%);
+    }
+  }
+
+  &--secondary {
+    border-color: var(--slate\.200);
+    background-color: var(--slate\.200);
+    color: var(--slate\.900);
+
+    &:hover {
+      background-color: hsl(from var(--slate\.500) h s l / 25%);
+    }
+  }
+  
+  &--outline {
+    border-color: var(--slate\.500);
+    background-color: var(--neutral\.50);
+    color: var(--slate\.900);
+
+    &:hover {
+      background-color: hsl(from var(--slate\.500) h s l / 25%);
+    }
+  }
+
+  &--warning {
+    border-color: var(--yellow\.500);
+    background-color: var(--yellow\.400);
+    color: var(--slate\.900);
+
+    &:hover {
+      background-color: hsl(from var(--yellow\.500) h s l / 65%);
+    }
+  }
+
+  &--success {
+    border-color: var(--green\.500);
+    background-color: var(--green\.500);
+    color: var(--neutral\.50);
+
+    &:hover {
+      background-color: hsl(from var(--green\.500) h s l / 65%);
+      border-color: hsl(from var(--green\.500) h s l / 15%);
+    }
+  }
+
+  &--destructive {
+    border-color: var(--red\.500);
+    background-color: var(--red\.500);
+    color: var(--neutral\.50);
+
+    &:hover {
+      background-color: hsl(from var(--red\.500) h s l / 65%);
+    }
+  }
+}

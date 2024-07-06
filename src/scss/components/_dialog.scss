@@ -1,0 +1,117 @@
+.dialog {
+  display: block;
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: hsl(from var(--slate\.950) h s l / 85%);
+    display: grid;
+    place-items: center;
+
+    &[data-state="open"] {
+      animation: fade-in-backdrop 150ms ease-out;
+    }
+    &[data-state="closed"] {
+      animation: fade-out-backdrop 150ms ease-out;
+    }
+  }
+
+  &__content {
+    --tw-translate-y: -50%;
+    --tw-translate-x: -50%;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    
+    --tw-enter-translate-y: -48%;
+    --tw-enter-translate-x: -50%;
+    --tw-enter-scale: 0.95;
+    --tw-enter-opacity: 1;
+
+    --tw-exit-opacity: 0;
+    --tw-exit-scale: 0.95;
+    --tw-exit-translate-x: -50%;
+    --tw-exit-translate-y: -50%;
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    display: grid;
+    z-index: 50;
+    padding: var(--padding\:8);
+    border-radius: var(--border-radius\:md);
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+      rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+      scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    background-color: var(--neutral\.50);
+    max-width: 420px;
+
+    @media (max-width: 639px) {
+      width: 100%;
+      max-width: 32rem;
+      border-radius: 0px;
+    }
+
+    &[data-state="open"] {
+      animation: animate-in;
+      animation-duration: .15s;
+    }
+
+    &[data-state="closed"] {
+      animation-name: animate-exit;
+      animation-duration: .15s;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--slate\.900);
+    border-radius: 9999px;
+    border-color: transparent;
+    background-color: inherit;
+    cursor: pointer;
+    padding: var(--padding\:1);
+
+    &:hover {
+      transition: background-color 75ms ease-out;
+      background-color: var(--slate\.300);
+    }
+
+    &:active {
+      background-color: var(--slate\.400);
+    }
+    
+    & > svg {
+      width: 17px;
+      height: 12px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: var(--bigTextSize);
+    font-weight: 600;
+    color: var(--slate\.900);
+  }
+
+  &__description {
+    font-size: var(--font-size\:1);
+    font-weight: 400;
+    color: var(--slate\.500);
+  }
+
+  &__footer {
+    display: flex;
+    font-size: 1rem;
+    font-weight: 600;
+    justify-content: flex-end;
+  }
+}

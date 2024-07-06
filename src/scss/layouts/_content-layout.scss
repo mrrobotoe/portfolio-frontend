@@ -1,0 +1,14 @@
+.content-layout {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  &__header {
+    &__title {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__content {
+    font-size: 1rem;
+  }
+}

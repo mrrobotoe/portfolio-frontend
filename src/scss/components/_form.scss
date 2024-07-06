@@ -1,0 +1,19 @@
+.form-item {
+  margin-top: var(--mt-4);
+  margin-bottom: var(--mt-4);
+
+  &__description {
+    font-size: var(--smallerTextSize);
+    color: var(--slate\.400);
+  }
+
+  &__control {
+    margin-top: var(--mt-2);
+  }
+  
+  &__message {
+    font-size: var(--smallerTextSize);
+    color: var(--red\.500);
+    font-weight: 500;
+  }
+}

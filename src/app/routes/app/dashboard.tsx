@@ -1,0 +1,32 @@
+import { QueryClient } from "@tanstack/react-query";
+
+import { getProjectQueryOptions } from "@/app/features/projects/api/get-projects";
+import { ProjectsList } from "@/app/features/projects/project/projects-list";
+import { ContentLayout } from "@/components/layouts/content-layout";
+import { useUser } from "@/lib/auth";
+
+const projectsLoader = (queryClient: QueryClient) => async () => {
+  const query = getProjectQueryOptions();
+
+  return (
+    queryClient.getQueryData(query.queryKey) ??
+    (await queryClient.fetchQuery(query))
+  );
+};
+
+const DashboardRoute = () => {
+  const user = useUser();
+
+  return (
+    <ContentLayout title={"Dashboard"}>
+      <div className="dashboard">
+        <h1 className="dashboard__header">
+          Welcome <b>{`${user.data?.name}`}</b>
+        </h1>
+        <ProjectsList />
+      </div>
+    </ContentLayout>
+  );
+};
+
+export { DashboardRoute, projectsLoader };

@@ -1,0 +1,13 @@
+.link {
+  color: var(--slate\.900);
+  text-decoration: none;
+  border: none;
+  display: grid;
+  place-items: center;
+  
+  &:hover,
+  &:focus {
+    border: none;
+    text-decoration: none;
+  }
+}

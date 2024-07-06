@@ -1,0 +1,25 @@
+.tooltip {
+  z-index: 50;
+  overflow: hidden;
+  border-radius: var(--border-radius\:md);
+  background-color: var(--slate\.900);
+  padding: var(--padding\:1) var(--padding\:3);
+  font-size: var(--smallerTextSize);
+  font-weight: 200;
+  color: var(--neutral\.50);
+
+  &[data-state="delayed-open"] {
+    animation: tooltip-enter;
+    animation-duration: .15s;
+  }
+
+  &[data-state="instant-open"] {
+    animation: tooltip-enter;
+    animation-duration: .15s;
+  }
+
+  &[data-state="closed"] {
+    animation-name: tooltip-exit;
+    animation-duration: .15s;
+  }
+}

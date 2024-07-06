@@ -1,0 +1,143 @@
+.toast-viewport {
+  position: fixed;
+  z-index: 100;
+  max-height: 100%;
+  max-width: 420px;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap\:2);
+  margin: 0;
+
+  @media (max-width: 568px) {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+}
+
+.toast {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap\:4);
+  padding: var(--padding\:4);
+  padding-right: var(--padding\:7);
+  margin: 0;
+  line-height: 1;
+  border-radius: var(--border-radius\:md);
+  border: 1px solid;
+  box-shadow: var(--shadow\:xs);
+
+  &[data-state=open] {
+    animation: slide-up 150ms ease-out;
+  }
+
+  &[data-state=closed] {
+    animation: slide-right 100ms ease-out;
+  }
+
+  &[data-swipe=move] {
+    transform: translateX(var(--radix-toast-swipe-move-x));
+  }
+
+  &[data-swipe=cancel] {
+    transform: translateX(0);
+    transition: transform 200ms ease-out;
+  }
+  &[data-swipe=end] {
+    animation: slideRight 100ms ease-out;
+  }
+
+  &--default {
+    border-color: var(--slate\.300);
+    background-color: var(--neutral\.50);;
+  }
+
+  &--destructive {
+    background-color: var(--red\.600);
+    color: var(--slate\.50);
+
+    & > * {
+      color: var(--slate\.50);
+    }
+  }
+
+  &--success {
+    background-color: var(--green\.600);
+    color: var(--slate\.50);
+
+    & > * {
+      color: var(--slate\.50);
+    }
+  }
+
+  &--warning {
+    background-color: var(--yellow\.400);
+    color: var(--slate\.800);
+  }
+
+  &__action {
+    flex-shrink: 0;
+    flex-grow: 0;
+    cursor: pointer;
+  }
+
+  &__close {
+    position: absolute;
+    display: inline-flex;
+    place-items: center;
+    box-shadow: none;
+    top: 4%;
+    right: 1%;
+    padding: 0.2rem;
+    background-color: transparent;
+    border: 1px solid;
+    border-color: transparent;
+    border-radius: var(--padding\:7);
+    cursor: pointer;
+
+    & > svg {
+      font-size: 0.5rem;
+      width: 0.775rem;
+      height: 0.775rem;
+      color: transparent;
+    }
+  }
+
+   &__close:hover {
+    background-color: inherit;
+  }
+
+  &:hover > &__close > svg {
+    color: inherit;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 0.865rem;
+  }
+
+  &__description {
+    font-size: 0.775rem;
+  
+  }
+}
+
+.toaster {
+  display: grid;
+  gap: var(--gap\:1);
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

@@ -1,0 +1,13 @@
+.loader__layout {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-container__cell__issues-list {
+  &__empty-set {
+    text-align: center;
+  }
+}

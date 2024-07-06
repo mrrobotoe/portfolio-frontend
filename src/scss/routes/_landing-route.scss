@@ -1,0 +1,38 @@
+.landing-route {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: var(--padding\:3);
+
+  &__icon {
+    height: 9rem;
+    width: 9rem;
+    margin-bottom: 3rem;
+    margin-top: -1rem;
+    animation: hover-up-down 2s ease-in-out infinite;
+    color: var(--blue\.500)
+  }
+
+  &__content {
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__description {
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    color: var(--slate\.600);
+    font-weight: 300;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 1rem;
+  }
+}
