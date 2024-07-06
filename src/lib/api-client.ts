@@ -1,7 +1,10 @@
+import type { Context } from "@netlify/edge-functions";
 import Axios, { InternalAxiosRequestConfig } from "axios";
 
 import { toast } from "@/components/ui/use-toast";
 import { env } from "@/config/env";
+
+const apiBaseURL = Netlify.env.get("VITE_APP_API_URL");
 
 function authRequestInterceptor(config: InternalAxiosRequestConfig) {
   if (config.headers) {
@@ -20,7 +23,7 @@ function authRequestInterceptor(config: InternalAxiosRequestConfig) {
 }
 
 export const api = Axios.create({
-  baseURL: process.env.VITE_APP_API_URL,
+  baseURL: apiBaseURL,
 });
 
 api.interceptors.request.use(authRequestInterceptor);

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
+    "@netlify/edge-functions": "^2.9.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
     "@radix-ui/react-avatar": "^1.1.0",
@@ -70,6 +71,6 @@
     "sass": "^1.77.6",
     "typescript": "^5.2.2",
     "vite": "^5.3.1",
-     "vitest": "^1.5.2"
+    "vitest": "^1.5.2"
   }
 }
