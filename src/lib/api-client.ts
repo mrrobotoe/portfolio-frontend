@@ -30,7 +30,6 @@ api.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    console.log(error);
     const message =
       error.response?.data?.non_field_errors ||
       error.response?.data?.detail ||
