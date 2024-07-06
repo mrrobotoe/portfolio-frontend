@@ -1,7 +1,7 @@
 import Axios, { InternalAxiosRequestConfig } from "axios";
 
 import { toast } from "@/components/ui/use-toast";
-import { env } from "@/config/env";
+// import { env } from "@/config/env";
 
 function authRequestInterceptor(config: InternalAxiosRequestConfig) {
   if (config.headers) {
@@ -20,7 +20,7 @@ function authRequestInterceptor(config: InternalAxiosRequestConfig) {
 }
 
 export const api = Axios.create({
-  baseURL: env.API_URL,
+  baseURL: process.env.API_URL,
 });
 
 api.interceptors.request.use(authRequestInterceptor);
