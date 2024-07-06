@@ -14,7 +14,7 @@ const LandingRoute = () => {
     if (user.data) {
       navigate("/app");
     } else {
-      navigate("/signup");
+      navigate("/auth/login");
     }
   };
 

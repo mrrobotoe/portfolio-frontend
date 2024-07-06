@@ -2,12 +2,12 @@ import { configureAuth } from "react-query-auth";
 import { Navigate, useLocation } from "react-router-dom";
 import { z } from "zod";
 
-import { User } from "@/types/api";
+import { AuthResponse, User } from "@/types/api";
 
 import { api } from "./api-client";
 
 const loginUser = async (data: LoginInput) => {
-  const response = await api.post("/user/token/", data);
+  const response: AuthResponse = await api.post("/user/token/", data);
   sessionStorage.setItem("portfolio-token", response.token);
   const user = await getUser();
   return user;
