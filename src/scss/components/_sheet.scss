@@ -4,12 +4,11 @@
   z-index: 50;
   background-color: hsl(from var(--slate\.950) h s l / 89%);
 
-  &[data-state=open] {
-
+  &[data-state="open"] {
+    animation: fade-in-backdrop 150ms ease-out;
   }
-
-  &[data-state=closed] {
-
+  &[data-state="closed"] {
+    animation: fade-out-backdrop 150ms ease-out;
   }
 }
 
@@ -28,7 +27,7 @@
     border-bottom: 1px solid var(--slate\.600);
 
     &[data-state=closed] {
-      animation: slie-out-to-top 150ms ease-out;
+      animation: slide-out-to-top 150ms ease-out;
     }
 
     &[data-state=open] {
@@ -60,11 +59,11 @@
     border-right: 1px solid var(--slate\.600);
 
     &[data-state=closed] {
-      animation: slide-out-to-left 150ms ease-out;
+      animation: slide-out-to-left 150ms var(--ease-in-cubic);
     }
 
     &[data-state=open] {
-      animation: slide-in-from-left 150ms ease-in;
+      animation: slide-in-from-left 150ms var(--ease-out-cubic);
     }
 
     @media screen and (max-width: 768px) {
