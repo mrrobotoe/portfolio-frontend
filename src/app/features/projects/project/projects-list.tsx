@@ -13,10 +13,6 @@ const ProjectsList = () => {
             <b>Project name: </b>
             {project.name}
           </p>
-          <p>
-            <b>Project Organization: </b>
-            {project.organization}
-          </p>
         </div>
       ))}
     </div>

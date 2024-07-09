@@ -165,6 +165,18 @@ export const columns: ColumnDef<Issue>[] = [
     accessorFn: (row) =>
       new Date(row.created_at).toLocaleDateString("en-US", dateOptions),
   },
+  {
+    header: "Actions",
+    cell: () => {
+      return (
+        <div className="flex items-center gap:sm">
+          <Button size="sm" variant="outline">
+            View
+          </Button>
+        </div>
+      );
+    },
+  },
 ];
 
 const IssuesList = () => {

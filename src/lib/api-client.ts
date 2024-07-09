@@ -32,12 +32,13 @@ api.interceptors.response.use(
   (error) => {
     const message =
       error.response?.data?.non_field_errors ||
+      error.response?.data?.email ||
       error.response?.data?.detail ||
       error.message;
 
     toast({
-      variant: "destructive",
-      title: "Error",
+      variant: "warning",
+      title: "Uh oh!",
       description: message,
     });
 
