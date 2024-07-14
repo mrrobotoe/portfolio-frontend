@@ -11,6 +11,7 @@ import * as React from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/components/ui/link";
 import { Spinner } from "@/components/ui/spinner";
 import {
   Table,
@@ -167,11 +168,13 @@ export const columns: ColumnDef<Issue>[] = [
   },
   {
     header: "Actions",
-    cell: () => {
+    accessorFn: (columns) => columns.id,
+    cell: ({ getValue }) => {
+      const id = getValue();
       return (
         <div className="flex items-center gap:sm">
-          <Button size="sm" variant="outline">
-            View
+          <Button asChild size="sm" variant="outline">
+            <Link to={`./${id}`}>View</Link>
           </Button>
         </div>
       );
@@ -184,7 +187,7 @@ const IssuesList = () => {
 
   if (issuesQuery.isLoading) {
     return (
-      <div className="flex items-center justify-center h-full w-full">
+      <div className="centered">
         <Spinner />
       </div>
     );

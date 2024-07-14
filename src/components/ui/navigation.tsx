@@ -4,7 +4,7 @@ import {
   DiscordLogoIcon,
   Pencil2Icon,
   ExitIcon,
-  LayersIcon,
+  // LayersIcon,
 } from "@radix-ui/react-icons";
 import * as React from "react";
 import { useLocation } from "react-router-dom";
@@ -54,13 +54,12 @@ const Navigation = React.forwardRef<
                   value="x"
                 >
                   <DiscordLogoIcon />
-                  {/* <a href="#">Home</a> */}
                 </ToggleGroupItem>
               </TooltipTrigger>
               <TooltipContent side="right">Roboto</TooltipContent>
             </Tooltip>
           </Link>
-          <Link className="desktop-navigation__link" to="/app/backlog">
+          {/* <Link className="desktop-navigation__link" to="/app/backlog">
             <Tooltip>
               <TooltipTrigger asChild>
                 <ToggleGroupItem
@@ -68,14 +67,13 @@ const Navigation = React.forwardRef<
                   value="a"
                 >
                   <LayersIcon />
-                  {/* <a href="#">Home</a> */}
                 </ToggleGroupItem>
               </TooltipTrigger>
               <TooltipContent sideOffset={10} side="right">
                 Backlog
               </TooltipContent>
             </Tooltip>
-          </Link>
+          </Link> */}
           <Link className="desktop-navigation__link" to="/app/messages">
             <Tooltip>
               <TooltipTrigger asChild>
@@ -84,7 +82,6 @@ const Navigation = React.forwardRef<
                   value="b"
                 >
                   <EnvelopeClosedIcon />
-                  {/* <a href="#">Home</a> */}
                 </ToggleGroupItem>
               </TooltipTrigger>
               <TooltipContent side="right">Mail</TooltipContent>

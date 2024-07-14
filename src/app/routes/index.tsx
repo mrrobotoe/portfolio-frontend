@@ -66,6 +66,13 @@ const createRouter = (queryClient: QueryClient) =>
           },
         },
         {
+          path: "issues/:issueId",
+          lazy: async () => {
+            const { IssueRoute } = await import("./app/issues/issue");
+            return { Component: IssueRoute };
+          },
+        },
+        {
           path: "issues/create-issue",
           lazy: async () => {
             const { CreateIssueRoute } = await import(

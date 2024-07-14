@@ -26,7 +26,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
             <AuthLoader
               renderLoading={() => (
                 <div className="h-full flex justify-center items-center">
-                  <Spinner />
+                  <Spinner size="xl" />
                 </div>
               )}
             >

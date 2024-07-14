@@ -24,6 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -131,7 +132,10 @@ const CreateIssue = () => {
             )}
           />
           <Button disabled={createIssueMutation.isPending} type="submit">
-            Create
+            {createIssueMutation.isPending && (
+              <Spinner size="md" variant="secondary" />
+            )}
+            {createIssueMutation.isPending ? "Creating..." : "Create"}
           </Button>
         </form>
       </Form>
