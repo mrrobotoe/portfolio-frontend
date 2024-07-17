@@ -36,9 +36,13 @@ const IssueView = ({ issueId }: { issueId: string }) => {
 
   return (
     <div className="issue-view">
-      <p>{issueQuery.data.description}</p>
-      <Label>Status:</Label>
-      {badgeComponent}
+      <section className="issue-view__content">
+        <p>{issueQuery.data.description}</p>
+      </section>
+      <aside className="issue-view__sidebar">
+        <Label>Status:</Label>
+        {badgeComponent}
+      </aside>
     </div>
   );
 };

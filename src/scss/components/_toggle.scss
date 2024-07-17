@@ -24,7 +24,7 @@
     background-color: transparent; 
 
     &:not(:disabled):hover {
-      background-color: var(--slate\.100);
+      background-color: var(--slate\.200);
     }
     
     &:not(:disabled)[data-state="on"] {

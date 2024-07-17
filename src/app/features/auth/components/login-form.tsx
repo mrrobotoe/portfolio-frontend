@@ -28,7 +28,7 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
   const form = useForm<z.infer<typeof loginInputSchema>>({
     resolver: zodResolver(loginInputSchema),
     defaultValues: {
-      email: "usertwo@example.com",
+      email: "",
       password: "",
     },
   });

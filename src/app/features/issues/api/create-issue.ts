@@ -11,16 +11,12 @@ const createIssueInputSchema = z.object({
   title: z.string().min(1, "Required"),
   description: z.string().min(1, "Required"),
   status: z.enum(["Open", "Done", "In Progress", "Backlog"]),
-  project: z.number().min(1, "Required"),
 });
 
 type CreateIssueInput = z.infer<typeof createIssueInputSchema>;
 
 const createIssue = ({ data }: { data: CreateIssueInput }): Promise<Issue> => {
-  return api.post("/tracker/issues/", {
-    ...data,
-    project: parseInt(data.project.toString()),
-  });
+  return api.post("/tracker/issues/", data);
 };
 
 type UseCreateIssueOptions = {

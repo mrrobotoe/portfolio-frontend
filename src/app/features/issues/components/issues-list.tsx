@@ -8,32 +8,28 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Link } from "@/components/ui/link";
 import { Spinner } from "@/components/ui/spinner";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { dateOptions } from "@/lib/utils";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { acronymn, dateOptions } from "@/lib/utils";
 import { Issue } from "@/types/api";
 
 import { useIssues } from "../api/get-issues";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  status: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  status,
 }: DataTableProps<TData, TValue>) {
+  const navigate = useNavigate();
+
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const table = useReactTable({
     data,
@@ -47,57 +43,45 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <Table>
-      <TableHeader>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <TableRow key={headerGroup.id}>
-            {headerGroup.headers.map((header) => {
-              return (
-                <TableHead key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
+    <>
+      {table.getRowModel().rows?.length ? (
+        <div className="status__header">{status}</div>
+      ) : null}
+      <Table>
+        <TableBody>
+          {table.getRowModel().rows?.length
+            ? table.getRowModel().rows.map((row) => (
+                <TableRow
+                  onClick={() => {
+                    const id = (row.getValue("id") as string)?.split("-").pop();
+                    navigate(`./${id}`);
+                  }}
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
                       )}
-                </TableHead>
-              );
-            })}
-          </TableRow>
-        ))}
-      </TableHeader>
-      <TableBody>
-        {table.getRowModel().rows?.length ? (
-          table.getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-              data-state={row.getIsSelected() && "selected"}
-            >
-              {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))
-        ) : (
-          <TableRow>
-            <TableCell
-              colSpan={columns.length}
-              className="table-container__cell__empty-set h-24 text-center"
-            >
-              Empty
-            </TableCell>
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            : null}
+        </TableBody>
+      </Table>
+    </>
   );
 }
 
 export const columns: ColumnDef<Issue>[] = [
   {
     accessorKey: "id",
+    accessorFn: (row) => {
+      return acronymn(row.team) + "-" + row.id;
+    },
     header: ({ column }) => {
       return (
         <Button
@@ -116,40 +100,6 @@ export const columns: ColumnDef<Issue>[] = [
     header: "Title",
   },
   {
-    accessorKey: "status",
-    header: ({ column }) => {
-      return (
-        <Button
-          className="table-container__button"
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Status
-          <CaretSortIcon />
-        </Button>
-      );
-    },
-    cell: ({ getValue }) => {
-      const status = getValue();
-      if (status === "Open") {
-        return <Badge variant="outline">Open</Badge>;
-      }
-      if (status === "Done") {
-        return <Badge variant="success">Done</Badge>;
-      }
-      if (status === "In Progress") {
-        return <Badge variant="warning">In Progress</Badge>;
-      }
-      if (status === "Backlog") {
-        return <Badge variant="secondary">Backlog</Badge>;
-      }
-    },
-  },
-  {
-    accessorKey: "project_name",
-    header: "Project",
-  },
-  {
     accessorKey: "created_at",
     header: ({ column }) => {
       return (
@@ -166,23 +116,9 @@ export const columns: ColumnDef<Issue>[] = [
     accessorFn: (row) =>
       new Date(row.created_at).toLocaleDateString("en-US", dateOptions),
   },
-  {
-    header: "Actions",
-    accessorFn: (columns) => columns.id,
-    cell: ({ getValue }) => {
-      const id = getValue();
-      return (
-        <div className="flex items-center gap:sm">
-          <Button asChild size="sm" variant="outline">
-            <Link to={`./${id}`}>View</Link>
-          </Button>
-        </div>
-      );
-    },
-  },
 ];
 
-const IssuesList = () => {
+const IssuesList = ({ status }: { status: string }) => {
   const issuesQuery = useIssues();
 
   if (issuesQuery.isLoading) {
@@ -195,7 +131,15 @@ const IssuesList = () => {
 
   if (!issuesQuery.data) return null;
 
-  return <DataTable columns={columns} data={issuesQuery.data} />;
+  return (
+    <>
+      <DataTable
+        status={status}
+        columns={columns}
+        data={issuesQuery.data.filter((d) => d.status === status)}
+      />
+    </>
+  );
 };
 
 export { IssuesList };

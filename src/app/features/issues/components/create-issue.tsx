@@ -28,12 +28,10 @@ import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 
-import { useProjects } from "../../projects/api/get-projects";
 import { createIssueInputSchema, useCreateIssue } from "../api/create-issue";
 
 const CreateIssue = () => {
   const { toast } = useToast();
-  const projects = useProjects();
 
   // const navigate = useNavigate();
 
@@ -43,7 +41,6 @@ const CreateIssue = () => {
       title: "",
       description: "",
       status: "Open",
-      project: projects.data?.[0].id ?? 0,
     },
   });
 
@@ -91,7 +88,7 @@ const CreateIssue = () => {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Textarea {...field} />
+                  <Textarea rows={10} {...field} />
                 </FormControl>
                 <FormDescription>Provide more details.</FormDescription>
                 <FormMessage />

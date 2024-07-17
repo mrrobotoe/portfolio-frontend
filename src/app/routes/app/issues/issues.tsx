@@ -15,8 +15,11 @@ const issuesLoader = (queryClient: QueryClient) => async () => {
 
 const IssuesRoute = () => {
   return (
-    <ContentLayout title={"Issues"}>
-      <IssuesList />
+    <ContentLayout title={"All Issues"}>
+      <IssuesList status={"Open"} />
+      <IssuesList status={"In Progress"} />
+      <IssuesList status={"Backlog"} />
+      <IssuesList status={"Done"} />
     </ContentLayout>
   );
 };

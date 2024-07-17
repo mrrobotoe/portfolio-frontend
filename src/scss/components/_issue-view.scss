@@ -1,0 +1,19 @@
+.issue-view {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+
+  &__content {
+  }
+
+  &__sidebar {
+    position: fixed;
+    top: 0.6%;
+    bottom: 0;
+    right: 0%;
+    background-color: var(--neutral\.50);
+    border-left: 1px solid;
+    border-top: 1px solid;
+    border-color: var(--slate\.200);
+    padding: 5rem;
+  }
+}

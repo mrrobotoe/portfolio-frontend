@@ -11,6 +11,7 @@
   box-shadow: var(--shadow\:sm);
   outline: none;
   resize: vertical;
+  line-height: 1.5;
 
   &:disabled {
     opacity: 50%;

@@ -13,8 +13,9 @@ export type User = Entity<{
   name: string;
   email: string;
   role: "ADMIN" | "USER";
-  teamId: string;
-  bio: string;
+  team: string;
+  team_name: string;
+  team_acronym: string;
 }>;
 
 export type AuthResponse = {
@@ -28,13 +29,17 @@ export type Issue = Entity<{
   status: string;
   project: number;
   created_at: Date;
+  team: string;
 }>;
 
 export type Project = Entity<{
-  id: number;
   name: string;
-  organization: number;
+  team: number;
   issues: Issue[];
-  createdAt: string;
   updatedAt: string;
+}>;
+
+export type Team = Entity<{
+  name: string;
+  description: string;
 }>;
