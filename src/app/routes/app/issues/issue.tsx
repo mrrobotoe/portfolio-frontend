@@ -42,7 +42,7 @@ const IssueRoute = () => {
   if (!issueQuery.data) return null;
   return (
     <>
-      <ContentLayout title={issueQuery.data.title}>
+      <ContentLayout title={"Issue Detail"}>
         <IssueView issueId={issueId} />
       </ContentLayout>
     </>

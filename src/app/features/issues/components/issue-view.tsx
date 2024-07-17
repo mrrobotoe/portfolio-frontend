@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
-import { Label } from "@/components/ui/label";
+import { ValueIcon, LapTimerIcon } from "@radix-ui/react-icons";
+
 import { Spinner } from "@/components/ui/spinner";
 
 import { useIssue } from "../api/get-issue";
@@ -19,29 +19,28 @@ const IssueView = ({ issueId }: { issueId: string }) => {
     );
   }
 
-  let badgeComponent = null;
-
-  if (issueQuery.data.status === "Open") {
-    badgeComponent = <Badge variant="outline">Open</Badge>;
-  }
-  if (issueQuery.data.status === "Done") {
-    badgeComponent = <Badge variant="success">Done</Badge>;
-  }
-  if (issueQuery.data.status === "In Progress") {
-    badgeComponent = <Badge variant="warning">In Progress</Badge>;
-  }
-  if (issueQuery.data.status === "Backlog") {
-    badgeComponent = <Badge variant="secondary">Backlog</Badge>;
-  }
-
   return (
     <div className="issue-view">
       <section className="issue-view__content">
-        <p>{issueQuery.data.description}</p>
+        <h4 className="issue-view__content__header">{issueQuery.data.title}</h4>
+        <p className="issue-view__content__description">
+          {issueQuery.data.description}
+        </p>
       </section>
       <aside className="issue-view__sidebar">
-        <Label>Status:</Label>
-        {badgeComponent}
+        <div className="issue-view__sidebar__header">
+          <p>Properties</p>
+        </div>
+        <div className="issue-view__sidebar__properties">
+          <div className="issue-view__sidebar__properties__property">
+            <ValueIcon />
+            <span>{issueQuery.data.status}</span>
+          </div>
+          <div className="issue-view__sidebar__properties__property">
+            <LapTimerIcon />
+            <span>Medium</span>
+          </div>
+        </div>
       </aside>
     </div>
   );
