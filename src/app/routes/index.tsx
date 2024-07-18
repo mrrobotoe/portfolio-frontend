@@ -31,6 +31,13 @@ const createRouter = (queryClient: QueryClient) =>
       },
     },
     {
+      path: "/auth/create-team",
+      lazy: async () => {
+        const { CreateTeamRoute } = await import("./auth/create-team");
+        return { Component: CreateTeamRoute };
+      },
+    },
+    {
       path: "/app",
       element: (
         <ProtectedRoute>

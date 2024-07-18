@@ -8,6 +8,13 @@ export const formatDate = (date: Date) =>
 
 export const acronymn = (str: string) => {
   const words = str.split(" ");
-  const firstLetters = words[0][0] + words[0][2].toUpperCase() + words[1][0];
-  return firstLetters;
+
+  let abbreviation;
+
+  if (words[0].length >= 5) {
+    abbreviation = words[0][0] + words[0][2].toUpperCase() + words[1][0];
+    return abbreviation;
+  }
+
+  return words[0][0] + words[1][0];
 };

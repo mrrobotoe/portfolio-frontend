@@ -83,5 +83,14 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     );
   }
 
+  if (!user.data?.team) {
+    return (
+      <Navigate
+        to={`/auth/create-team?redirectTo=${encodeURIComponent(location.pathname)}`}
+        replace
+      />
+    );
+  }
+
   return children;
 };
