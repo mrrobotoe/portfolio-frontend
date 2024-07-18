@@ -22,9 +22,9 @@ const DashboardRoute = () => {
         <h1 className="dashboard__header">
           Welcome <b>{`${user.data?.name}`}</b>
         </h1>
-        <h3>
+        <h5>
           Team: <span>{`${user.data?.team_name}`}</span>
-        </h3>
+        </h5>
         <p>
           This is the dashboard. You can add new projects, view existing ones,
           and manage your tasks.

@@ -1,9 +1,10 @@
+import { MessageList } from "@/app/features/messages/components/messages-list";
 import { ContentLayout } from "@/components/layouts/content-layout";
 
 const MessagesRoute = () => {
   return (
     <ContentLayout title="Messages">
-      <h2>Empty</h2>
+      <MessageList />
     </ContentLayout>
   );
 };
