@@ -4,5 +4,14 @@
     margin-right: auto;
     width: calc(100% - 120px);
     max-width: 76ch;
+
+  }
+
+  @media screen and (max-width: 769px) {
+   & > * {
+      width: 100%;
+      padding-right: 0.575rem;
+      padding-left: 0.575rem;
+    }
   }
 }
