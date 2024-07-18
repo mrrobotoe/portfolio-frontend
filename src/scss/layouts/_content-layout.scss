@@ -11,9 +11,18 @@
     padding-left: 2rem;
   }
 
+  @media screen and (max-width: 769px) {
+    border: 0px;
+    & > * {
+      padding-left: 0.275rem;
+    }
+  }
+
   &__header {
     border-bottom: 1px solid;
     border-color: var(--slate\.200);
+    display: flex;
+    align-items: center;
 
     &__title {
       font-size: 0.875rem;

@@ -33,8 +33,6 @@ import { createIssueInputSchema, useCreateIssue } from "../api/create-issue";
 const CreateIssue = () => {
   const { toast } = useToast();
 
-  // const navigate = useNavigate();
-
   const form = useForm<z.infer<typeof createIssueInputSchema>>({
     resolver: zodResolver(createIssueInputSchema),
     defaultValues: {

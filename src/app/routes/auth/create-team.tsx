@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { CreateTeamForm } from "@/app/features/teams/components/create-form";
+import { CreateTeamForm } from "@/app/features/teams/components/create-team-form";
 import { Layout } from "@/components/layouts/auth-layout";
 
 const CreateTeamRoute = () => {

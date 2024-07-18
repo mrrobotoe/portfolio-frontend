@@ -34,6 +34,7 @@ export function DataTable<TData, TValue>({
   const table = useReactTable({
     data,
     columns,
+    columnResizeMode: "onChange",
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
@@ -79,40 +80,16 @@ export function DataTable<TData, TValue>({
 export const columns: ColumnDef<Issue>[] = [
   {
     accessorKey: "id",
+    maxSize: 20,
     accessorFn: (row) => {
       return acronymn(row.team) + "-" + row.id;
-    },
-    header: ({ column }) => {
-      return (
-        <Button
-          className="table-container__button"
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Id
-          <CaretSortIcon />
-        </Button>
-      );
     },
   },
   {
     accessorKey: "title",
-    header: "Title",
   },
   {
     accessorKey: "created_at",
-    header: ({ column }) => {
-      return (
-        <Button
-          className="table-container__button"
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Created At
-          <CaretSortIcon />
-        </Button>
-      );
-    },
     accessorFn: (row) =>
       new Date(row.created_at).toLocaleDateString("en-US", dateOptions),
   },

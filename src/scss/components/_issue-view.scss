@@ -4,6 +4,12 @@
   padding-left: 2rem;
   height: 100%;
 
+  @media screen and (max-width: 769px) {
+    grid-template-rows: min-content 1fr;
+    grid-template-columns: 1fr;
+    padding-left: 0.275rem;
+  }
+
   &__content {
     margin-left: auto;
     margin-right: auto;
@@ -12,6 +18,12 @@
     width: calc(100% - 120px);
     max-width: 76ch;
     
+    @media screen and (max-width: 769px) {
+      padding-right: 0.375rem;
+      padding-left: 0.375rem;
+      width: 100%;
+   }
+
     &__header {
       text-align: left;
       font-weight: 500;
@@ -33,6 +45,14 @@
     border-color: var(--slate\.200);
     padding-top: 0.275rem;
     
+
+    @media screen and (max-width: 769px) {
+      order: -1;
+      border-bottom: 1px solid var(--slate\.200);
+      border-left: 0px;
+      margin-top: 0rem;
+    }
+
     &__header {
       font-size: 0.775rem;
       font-weight: 500;
@@ -40,6 +60,17 @@
       padding-top: 0.275rem;
       padding-left: 1.5rem;
       margin-bottom: 1rem;
+
+      @media screen and (max-width: 769px) {
+        padding-top: 0rem;
+        padding-left: 1.5rem;
+        margin-bottom: 0rem;
+      }
+      & > p {
+        @media screen and (max-width: 769px) {
+          display: none;
+        }
+      }
     }
 
     &__properties {
@@ -54,16 +85,31 @@
       gap: 1rem;
       padding-right: 5rem;
 
+      @media screen and (max-width: 769px) {
+        flex-direction: row;
+        padding-bottom: 0.375rem;
+        padding-right: 0rem;
+        padding-left: 0.37rem;
+
+      }
+
       &__property {
         display: flex;
         gap: 0.375rem;
         align-items: center;
         padding: 0.275rem;
         padding-right: 3rem;
-
         min-width: 10rem;
         width: 100%;
         border-radius: var(--border-radius\:md);
+
+        @media screen and (max-width: 769px) {
+          flex-direction: row;
+          width: max-content;
+          min-width: auto;
+          padding-right: 0rem;
+          padding: 0.275rem 0.37rem;
+        }
 
         & > svg {
           color: var(--slate\.500);

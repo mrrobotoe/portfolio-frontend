@@ -10,7 +10,7 @@ const Table = React.forwardRef<
       ref={ref}
       className={cn(
         "table-container__table",
-        "w-full caption-bottom text-sm",
+        "caption-bottom text-sm",
         className,
       )}
       {...props}
