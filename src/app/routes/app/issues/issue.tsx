@@ -36,14 +36,19 @@ const IssueRoute = () => {
   });
 
   if (issueQuery.isLoading) {
-    return <Spinner />;
+    return (
+      <div className="centered">
+        <Spinner size="xl" />
+      </div>
+    );
   }
 
   if (!issueQuery.data) return null;
+
   return (
     <>
       <ContentLayout title={"Issue Detail"}>
-        <IssueView issueId={issueId} />
+        <IssueView issue={issueQuery.data} />
       </ContentLayout>
     </>
   );

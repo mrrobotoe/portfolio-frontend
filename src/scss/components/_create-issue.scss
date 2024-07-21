@@ -7,6 +7,11 @@
 
   }
 
+  &__options {
+    display: flex;
+    gap: 1rem;
+  }
+  
   @media screen and (max-width: 769px) {
    & > * {
       width: 100%;

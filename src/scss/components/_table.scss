@@ -38,10 +38,10 @@
   }
 
   &__row {
-    // border-bottom: 1px solid var(--slate\.500);
+    border-bottom: 1px solid var(--slate\.200);
     width: 100%;
     display: grid;
-    grid-template-columns: 80px repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: 100px repeat(auto-fit, minmax(100px, 1fr));
     gap: 0;
 
     &:hover {
@@ -69,11 +69,21 @@
     padding: 0.475rem;
     vertical-align: middle;
     color: var(--slate\.900);
-    border-bottom: 1px solid var(--slate\.200);
     
+    display: flex;
+    vertical-align: middle;
+    gap: 0.575rem;
+
+    & > svg {
+      height: 0.875rem;
+      align-self: center;
+      width: 0.875rem;
+      color: hsl(from var(--slate\.950) h s l / 60%);
+    }
+
     &:first-child {
       padding-left: 2rem;
-      color: var(--neutral\.400);
+      color: hsl(from var(--slate\.950) h s l / 60%);
       width: max-content;
       font-weight: 400;
     }
@@ -88,7 +98,7 @@
       @media screen and (max-width: 769px) {
         display: none;
       }
-      text-align: right;
+      justify-self: end;
     }
   }
 

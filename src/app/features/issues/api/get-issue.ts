@@ -4,11 +4,16 @@ import { api } from "@/lib/api-client";
 import { QueryConfig } from "@/lib/react-query";
 import { Issue } from "@/types/api";
 
-const getIssue = ({ issueId }: { issueId: string }): Promise<Issue> => {
+const getIssue = ({
+  issueId,
+}: {
+  issueId: string | undefined;
+}): Promise<Issue> => {
   return api.get(`/tracker/issues/${issueId}/`);
 };
 
-const getIssueQueryOptions = (issueId: string) => {
+const getIssueQueryOptions = (issueKey: string) => {
+  const issueId = issueKey.split("-").pop();
   return queryOptions({
     queryKey: ["issues", issueId],
     queryFn: () => getIssue({ issueId }),

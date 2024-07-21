@@ -14,8 +14,8 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <React.Suspense
       fallback={
-        <div className="app-provider">
-          <Spinner />
+        <div className="centered">
+          <Spinner size="xl" />
         </div>
       }
     >
@@ -25,7 +25,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
             <Toaster />
             <AuthLoader
               renderLoading={() => (
-                <div className="h-full flex justify-center items-center">
+                <div className="centered">
                   <Spinner size="xl" />
                 </div>
               )}

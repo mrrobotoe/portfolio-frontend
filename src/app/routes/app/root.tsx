@@ -9,7 +9,13 @@ const AppRoot = () => {
   const location = useLocation();
   return (
     <DashboardLayout>
-      <Suspense fallback={<Spinner />}>
+      <Suspense
+        fallback={
+          <div className="centered">
+            <Spinner />
+          </div>
+        }
+      >
         <ErrorBoundary
           key={location.pathname}
           fallback={<div>Something went wrong!</div>}

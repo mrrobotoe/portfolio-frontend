@@ -30,6 +30,8 @@ export type Issue = Entity<{
   project: number;
   created_at: Date;
   team: string;
+  priority: string;
+  issue_key: string;
 }>;
 
 export type Project = Entity<{

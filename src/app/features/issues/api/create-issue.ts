@@ -11,6 +11,7 @@ const createIssueInputSchema = z.object({
   title: z.string().min(1, "Required"),
   description: z.string().min(1, "Required"),
   status: z.enum(["Open", "Done", "In Progress", "Backlog"]),
+  priority: z.enum(["Low", "Medium", "High"]),
 });
 
 type CreateIssueInput = z.infer<typeof createIssueInputSchema>;

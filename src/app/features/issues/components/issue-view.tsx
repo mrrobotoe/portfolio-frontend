@@ -1,31 +1,19 @@
-import { ValueIcon, LapTimerIcon } from "@radix-ui/react-icons";
+import { priorities, properties } from "@/lib/utils";
+import { Issue } from "@/types/api";
 
-import { Spinner } from "@/components/ui/spinner";
+type IssueViewProps = {
+  issue: Issue;
+};
 
-import { useIssue } from "../api/get-issue";
-
-const IssueView = ({ issueId }: { issueId: string }) => {
-  const issueQuery = useIssue({
-    issueId,
-  });
-
-  if (!issueQuery.data) return null;
-
-  if (issueQuery.isLoading) {
-    return (
-      <div className="centered">
-        <Spinner size="xl" />
-      </div>
-    );
-  }
+const IssueView = ({ issue }: IssueViewProps) => {
+  const StatusIcon = properties[issue.status].icon;
+  const PriorityIcon = priorities[issue.priority].icon;
 
   return (
     <div className="issue-view">
       <section className="issue-view__content">
-        <h4 className="issue-view__content__header">{issueQuery.data.title}</h4>
-        <p className="issue-view__content__description">
-          {issueQuery.data.description}
-        </p>
+        <h4 className="issue-view__content__header">{issue.title}</h4>
+        <p className="issue-view__content__description">{issue.description}</p>
       </section>
       <aside className="issue-view__sidebar">
         <div className="issue-view__sidebar__header">
@@ -33,12 +21,12 @@ const IssueView = ({ issueId }: { issueId: string }) => {
         </div>
         <div className="issue-view__sidebar__properties">
           <div className="issue-view__sidebar__properties__property">
-            <ValueIcon />
-            <span>{issueQuery.data.status}</span>
+            <StatusIcon />
+            <span>{issue.status}</span>
           </div>
           <div className="issue-view__sidebar__properties__property">
-            <LapTimerIcon />
-            <span>Medium</span>
+            <PriorityIcon />
+            <span>{priorities[issue.priority].value}</span>
           </div>
         </div>
       </aside>
